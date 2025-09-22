@@ -1,0 +1,28 @@
+{% extends 'web/base.html' %}
+{% block title %}Aktuality a Akce | U Svitavského Rytíře{% endblock %}
+
+{% block content %}
+<section class="page-content">
+    <h1>Všechny Aktuality a Akce</h1>
+    <p>Sledujte, co se u nás děje!</p>
+
+    <div class="news-list">
+        {% for aktualita in aktuality %}
+            <article class="news-list-item">
+                {% if aktualita.obrazek %}
+                    <div class="news-image-container">
+                        <img src="{{ aktualita.obrazek.url }}" alt="{{ aktualita.nadpis }}">
+                    </div>
+                {% endif %}
+                <div class="news-text-container">
+                    <h2>{{ aktualita.nadpis }}</h2>
+                    <small class="news-date">Publikováno: {{ aktualita.datum_vytvoreni|date:"d. F Y" }}</small>
+                    <p>{{ aktualita.obsah|linebreaksbr }}</p>
+                </div>
+            </article>
+        {% empty %}
+            <p>Momentálně zde nejsou žádné novinky ani plánované akce.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

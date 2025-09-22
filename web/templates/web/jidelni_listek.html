@@ -1,0 +1,41 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block title %}Jídelní Lístek | U Svitavského Rytíře{% endblock %}
+
+{% block content %}
+<section class="menu-page">
+    <h1 class="page-title">Jídelní Lístek</h1>
+    <p class="page-subtitle">Vše poctivě připraveno z lokálních surovin a s láskou našeho šéfkuchaře.</p>
+
+    {% for kat in kategorie %}
+    <div class="menu-category">
+        <h2>{{ kat.nazev }}</h2>
+        <div class="menu-grid">
+            
+            {% for polozka in kat.polozky.all %}
+                {% if polozka.dostupne %}
+                <div class="menu-item-card">
+                    
+                    {% if polozka.obrazek %}
+                        <img src="{{ polozka.obrazek.url }}" alt="{{ polozka.nazev }}">
+                    {% else %}
+                        <img src="https://placehold.co/400x250/242424/f0f0f0?text=Dobrou+Chuť" alt="Zástupný obrázek">
+                    {% endif %}
+                    
+                    <h3>{{ polozka.nazev }}</h3>
+                    
+                    <p class="description">{{ polozka.popis|default:"&nbsp;" }}</p>
+
+                    <div class="price">{{ polozka.cena|floatformat:0 }} Kč</div>
+                    
+                </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+    {% endfor %}
+
+</section>
+{% endblock %}

@@ -1,0 +1,311 @@
+/* ==========================================================================
+   FINÁLNÍ VERZE VZHLEDU PRO "U SVITAVSKÉHO RYTÍŘE" (21. 9. 2025)
+   ========================================================================== */
+
+/* ===== Import fontů a definice barev ===== */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Roboto:wght@400;500&display=swap');
+
+:root {
+    --primary-color: #D4AF37; /* Zlatá/Okrová pro akcenty */
+    --dark-bg: #1a1a1a;       /* Velmi tmavé pozadí */
+    --card-bg: #242424;       /* Tmavě šedá pro karty a sekce */
+    --light-text: #f0f0f0;    /* Světlý text */
+    --secondary-text: #a0a0a0;/* Méně důležitý text (popisky, alergeny) */
+    --font-headings: 'EB Garamond', serif; /* Elegantní font pro nadpisy */
+    --font-body: 'Roboto', sans-serif; /* Čitelný font pro text */
+    --border-radius: 8px;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Základní nastavení ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    line-height: 1.6;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headings);
+    font-weight: 700;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    filter: brightness(1.2);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ===== Hlavička a Navigace ===== */
+header {
+    background-color: rgba(26, 26, 26, 0.85);
+    padding: 0.5rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav a.logo img {
+    height: 50px; /* Upravte výšku loga podle potřeby */
+    width: auto;
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: var(--light-text);
+    font-weight: 500;
+    font-size: 1rem;
+    padding-bottom: 8px;
+    border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    border-bottom-color: var(--primary-color);
+    color: #fff;
+}
+
+/* ===== Tlačítka ===== */
+.button {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #1a1a1a;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 50px; /* Kulatější rohy */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.button:hover {
+    background: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+
+/* ===== Úvodní stránka (Hero Section) ===== */
+/* Úvodní stránka (Hero Section) */
+/* Úvodní stránka (Hero Section) */
+.hero {
+    /* === NOVÉ A VYLEPŠENÉ NASTAVENÍ === */
+    min-height: 100vh; /* Klíčová vlastnost: minimální výška bude 100% výšky okna prohlížeče */
+    display: flex; /* Zapne Flexbox pro snadné centrování */
+    flex-direction: column; /* Uloží obsah pod sebe (nadpis, text, tlačítko) */
+    justify-content: center; /* Vystředí obsah vertikálně (na výšku) */
+    align-items: center; /* Vystředí obsah horizontálně (na šířku) */
+    
+    /* --- Původní vlastnosti, které zůstávají --- */
+    text-align: center;
+    padding: 2rem; /* Mírně upravený padding */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/hero.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax efekt */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    /* Odebrali jsme border-radius, aby to bylo přes celou stránku */
+}
+
+/* Zde se nastavuje tmavý závoj přes fotku. Můžete si s ním hrát. */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Změňte 0.4 na 0.2 (světlejší) nebo 0.6 (tmavší) podle vaší fotky */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+
+.hero * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+/* ===== Společné nadpisy pro podstránky ===== */
+.page-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.page-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--secondary-text);
+    margin-bottom: 3rem;
+}
+
+/* ===== Kartičky pro Aktuality a Jídelní lístek ===== */
+.news-container, .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.news-container article, .menu-item-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Jemný okraj */
+}
+
+.news-container article:hover, .menu-item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+.news-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.news-content {
+    padding: 1.5rem;
+}
+
+.news-content h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+.news-content small {
+    color: var(--secondary-text);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* ===== Jídelní lístek - specifické styly ===== */
+.menu-category {
+    margin-bottom: 4rem;
+}
+
+.menu-category h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.menu-item-card {
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.menu-item-card .description {
+    color: var(--secondary-text);
+    padding: 0 1.5rem;
+    flex-grow: 1; /* Zajistí, že cena bude vždy dole */
+    min-height: 40px;
+}
+
+.menu-item-card h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem 0;
+}
+
+.menu-item-card .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0 1.5rem 0;
+}
+.menu-item-card .price::before {
+    content: '★ ';
+    font-size: 1rem;
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    background: #121212;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* ===== Responzivita ===== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    nav ul {
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .page-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* Přidaný styl pro velké logo v hero sekci */
+.hero-logo {
+    margin-bottom: 2rem; /* Vytvoří mezeru pod logem */
+}
+
+.hero-logo img {
+    max-width: 150px; /* ZDE MŮŽETE MĚNIT VELIKOST LOGA */
+    height: auto;
+}

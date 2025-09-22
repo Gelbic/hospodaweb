@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %}U Svitavského Rytíře{% endblock %}</title>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'web/css/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="{% url 'index' %}" class="logo">
+                <img src="{% static 'web/images/logo.png' %}" alt="Logo U Svitavského Rytíře">
+            </a>
+
+            <ul>
+                <li><a href="{% url 'index' %}">Úvod</a></li>
+                <li><a href="{% url 'jidelni_listek' %}">Jídelní Lístek</a></li>
+                <li><a href="{% url 'aktuality' %}">Aktuality</a></li>
+                <li><a href="{% url 'kontakt' %}">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© {% now "Y" %} U Svitavského Rytíře. Všechna práva vyhrazena.</p>
+        <p>Postaveno na frameworku Django.</p>
+    </footer>
+
+</body>
+</html>

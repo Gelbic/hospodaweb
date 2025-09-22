@@ -1,0 +1,12 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block title %}Vítejte | U Svitavského Rytíře{% endblock %}
+
+{% block content %}
+<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{% static 'web/images/hero.png' %}');">
+    <h1>U Svitavského Rytíře</h1>
+    <p>Kde se tradice snoubí s chutí.</p>
+    <a href="{% url 'jidelni_listek' %}" class="button">Prohlédnout Menu</a>
+</section>
+{% endblock %}
