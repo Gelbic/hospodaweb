@@ -1,1 +1,1 @@
-Webová aplikace/stránka na hospodu banín
+Projekt Webové aplikace/stránky v rámci restaurací
